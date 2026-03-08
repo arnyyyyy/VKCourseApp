@@ -28,7 +28,7 @@ fun AppListToolbar(
                 modifier = modifier
                         .fillMaxWidth()
                         .height(60.dp)
-                        .padding(horizontal = 16.dp, vertical = 16.dp),
+                        .padding(all= 16.dp),
                 verticalAlignment = Alignment.CenterVertically,
         ) {
                 AsyncImage(
