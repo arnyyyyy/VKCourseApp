@@ -1,4 +1,4 @@
-package com.arno.vk_course_app.feature.app_details.ui
+package com.arno.vk_course_app.feature.app_details.presentation.ui
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row

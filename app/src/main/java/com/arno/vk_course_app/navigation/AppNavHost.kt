@@ -6,9 +6,9 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.toRoute
-import com.arno.vk_course_app.feature.app_details.ui.AppDetailsScreen
+import com.arno.vk_course_app.feature.app_details.presentation.ui.AppDetailsScreen
 import com.arno.vk_course_app.feature.app_list.data.AppListRepository
-import com.arno.vk_course_app.feature.app_list.ui.AppListScreen
+import com.arno.vk_course_app.feature.app_list.presentation.ui.AppListScreen
 import kotlinx.serialization.Serializable
 
 @Serializable
