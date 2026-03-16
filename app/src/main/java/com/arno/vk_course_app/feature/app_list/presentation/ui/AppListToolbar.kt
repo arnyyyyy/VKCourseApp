@@ -27,9 +27,9 @@ fun AppListToolbar(
         Row(
                 modifier = modifier
                         .fillMaxWidth()
-                        .height(60.dp)
-                        .padding(all= 16.dp),
-                verticalAlignment = Alignment.CenterVertically,
+                        .height(100.dp)
+                        .padding(all = 16.dp),
+                verticalAlignment = Alignment.Bottom,
         ) {
                 AsyncImage(
                         model = "https://mnogo-golosov.ru/wp-content/uploads/2025/08/RuStore_logo.svg_.png",
