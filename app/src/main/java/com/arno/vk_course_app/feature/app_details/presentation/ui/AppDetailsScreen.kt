@@ -23,12 +23,10 @@ import com.arno.vk_course_app.feature.app_details.presentation.AppDetailsViewMod
 
 @Composable
 fun AppDetailsScreen(
-        appId: String,
+        viewModelFactory: AppDetailsViewModelFactory,
         onBackClick: () -> Unit,
 ) {
-        val viewModel: AppDetailsViewModel = viewModel(
-                factory = AppDetailsViewModelFactory(appId)
-        )
+        val viewModel: AppDetailsViewModel = viewModel(factory = viewModelFactory)
         val state by viewModel.state.collectAsStateWithLifecycle()
 
         Scaffold(

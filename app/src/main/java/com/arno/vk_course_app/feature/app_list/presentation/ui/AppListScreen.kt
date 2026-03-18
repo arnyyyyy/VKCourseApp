@@ -29,9 +29,11 @@ private val ToolbarBlue = Color(0xFF4C75A3)
 @Composable
 fun AppListScreen(
         onAppClick: (AppDetails) -> Unit,
+        viewModelFactory: AppListViewModelFactory,
         modifier: Modifier = Modifier,
-        viewModel: AppListViewModel = viewModel(factory = AppListViewModelFactory()),
 ) {
+        val viewModel: AppListViewModel = viewModel(factory = viewModelFactory)
+
         val state by viewModel.state.collectAsStateWithLifecycle()
 
         val snackbarHostState = remember { SnackbarHostState() }
