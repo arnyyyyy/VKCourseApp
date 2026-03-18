@@ -7,7 +7,6 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.toRoute
 import com.arno.vk_course_app.feature.app_details.presentation.ui.AppDetailsScreen
-import com.arno.vk_course_app.feature.app_list.data.AppListRepository
 import com.arno.vk_course_app.feature.app_list.presentation.ui.AppListScreen
 import kotlinx.serialization.Serializable
 
@@ -35,13 +34,10 @@ fun AppNavHost(modifier: Modifier = Modifier) {
                 }
                 composable<AppDetailsRoute> { backStackEntry ->
                         val route = backStackEntry.toRoute<AppDetailsRoute>()
-                        val appDetails = AppListRepository.findById(route.appId)
-                        if (appDetails != null) {
-                                AppDetailsScreen(
-                                        appDetails = appDetails,
-                                        onBackClick = { navController.popBackStack() },
-                                )
-                        }
+                        AppDetailsScreen(
+                                appId = route.appId,
+                                onBackClick = { navController.popBackStack() },
+                        )
                 }
         }
 }

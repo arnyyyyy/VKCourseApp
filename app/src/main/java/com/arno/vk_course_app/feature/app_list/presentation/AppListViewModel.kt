@@ -2,14 +2,17 @@ package com.arno.vk_course_app.feature.app_list.presentation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.arno.vk_course_app.feature.app_list.data.AppListRepository
+import com.arno.vk_course_app.feature.app_list.domain.repository.AppRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
-class AppListViewModel : ViewModel() {
+class AppListViewModel(
+        private val repository: AppRepository,
+) : ViewModel() {
+
         private val _state = MutableStateFlow<AppListState>(AppListState.Loading)
         val state: StateFlow<AppListState> = _state.asStateFlow()
 
@@ -20,7 +23,7 @@ class AppListViewModel : ViewModel() {
                 viewModelScope.launch {
                         runCatching {
                                 _state.value = AppListState.Loading
-                                val apps = AppListRepository.getAppList()
+                                val apps = repository.getApps()
                                 _state.value = AppListState.Content(apps)
                         }.onFailure {
                                 _state.value = AppListState.Error
@@ -29,7 +32,7 @@ class AppListViewModel : ViewModel() {
         }
 
         fun onLogoClick() {
-                _pendingSnackbars.update { it + 1 } // здесь легкая операция, поэтому  норм делать не в корутине
+                _pendingSnackbars.update { it + 1 }
         }
 
         fun onSnackbarShown() {

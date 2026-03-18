@@ -19,9 +19,10 @@ import androidx.compose.ui.graphics.Color
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.arno.vk_course_app.R
-import com.arno.vk_course_app.feature.app_details.data.AppDetails
+import com.arno.vk_course_app.feature.app_list.domain.model.AppDetails
 import com.arno.vk_course_app.feature.app_list.presentation.AppListState
 import com.arno.vk_course_app.feature.app_list.presentation.AppListViewModel
+import com.arno.vk_course_app.feature.app_list.presentation.AppListViewModelFactory
 
 private val ToolbarBlue = Color(0xFF4C75A3)
 
@@ -29,7 +30,7 @@ private val ToolbarBlue = Color(0xFF4C75A3)
 fun AppListScreen(
         onAppClick: (AppDetails) -> Unit,
         modifier: Modifier = Modifier,
-        viewModel: AppListViewModel = viewModel(),
+        viewModel: AppListViewModel = viewModel(factory = AppListViewModelFactory()),
 ) {
         val state by viewModel.state.collectAsStateWithLifecycle()
 

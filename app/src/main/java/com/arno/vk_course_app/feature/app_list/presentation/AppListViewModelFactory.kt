@@ -1,15 +1,12 @@
-package com.arno.vk_course_app.feature.app_details.presentation
+package com.arno.vk_course_app.feature.app_list.presentation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.arno.vk_course_app.feature.app_list.data.repository.AppRepositoryImpl
 
-class AppDetailsViewModelFactory(
-        private val appId: String,
-) : ViewModelProvider.Factory {
+class AppListViewModelFactory : ViewModelProvider.Factory {
         @Suppress("UNCHECKED_CAST")
         override fun <T : ViewModel> create(modelClass: Class<T>): T {
-                return AppDetailsViewModel(appId = appId, repository = AppRepositoryImpl()) as T
+                return AppListViewModel(repository = AppRepositoryImpl()) as T
         }
 }
-
