@@ -1,4 +1,4 @@
-package com.arno.vk_course_app.feature.app_details.data
+package com.arno.vk_course_app.feature.app_list.domain.model
 
 
 enum class Category {
