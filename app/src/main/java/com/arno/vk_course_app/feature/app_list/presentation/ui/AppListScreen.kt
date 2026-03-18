@@ -20,7 +20,6 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.arno.vk_course_app.R
 import com.arno.vk_course_app.feature.app_details.data.AppDetails
-import com.arno.vk_course_app.feature.app_list.presentation.AppListEvent
 import com.arno.vk_course_app.feature.app_list.presentation.AppListState
 import com.arno.vk_course_app.feature.app_list.presentation.AppListViewModel
 
@@ -38,9 +37,10 @@ fun AppListScreen(
         val snackbarText = stringResource(id = R.string.snackbar_text)
 
         LaunchedEffect(Unit) {
-                viewModel.event.collect { event ->
-                        when (event) {
-                                AppListEvent.ShowLogoSnackbar -> snackbarHostState.showSnackbar(snackbarText)
+                viewModel.pendingSnackbars.collect { count ->
+                        if (count > 0) {
+                                snackbarHostState.showSnackbar(snackbarText)
+                                viewModel.onSnackbarShown()
                         }
                 }
         }
