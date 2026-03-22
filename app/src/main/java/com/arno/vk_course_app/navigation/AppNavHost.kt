@@ -42,7 +42,12 @@ fun AppNavHost(modifier: Modifier = Modifier) {
                         val route = backStackEntry.toRoute<AppDetailsRoute>()
                         AppDetailsScreen(
                                 viewModelFactory = AppDetailsViewModelFactory(route.appId, repository),
-                                onBackClick = { navController.popBackStack() },
+                                onBackClick = {
+                                        navController.popBackStack(
+                                                route = AppListRoute,
+                                                inclusive = false
+                                        )
+                                }
                         )
                 }
         }
