@@ -2,15 +2,18 @@ package com.arno.vk_course_app.feature.app_list.presentation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.arno.vk_course_app.feature.app_list.domain.usecase.GetAppsUseCase
+import com.arno.vk_course_app.feature.app_list.domain.repository.AppRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class AppListViewModel(
-        private val getAppsUseCase: GetAppsUseCase,
+@HiltViewModel
+class AppListViewModel @Inject constructor(
+        private val repository: AppRepository,
 ) : ViewModel() {
 
         private val _state = MutableStateFlow<AppListState>(AppListState.Loading)
@@ -23,7 +26,7 @@ class AppListViewModel(
                 viewModelScope.launch {
                         runCatching {
                                 _state.value = AppListState.Loading
-                                val apps = getAppsUseCase()
+                                val apps = repository.getApps()
                                 _state.value = AppListState.Content(apps)
                         }.onFailure {
                                 _state.value = AppListState.Error

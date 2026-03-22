@@ -17,22 +17,20 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.arno.vk_course_app.R
 import com.arno.vk_course_app.feature.app_list.domain.model.AppDetails
 import com.arno.vk_course_app.feature.app_list.presentation.AppListState
 import com.arno.vk_course_app.feature.app_list.presentation.AppListViewModel
-import com.arno.vk_course_app.feature.app_list.presentation.AppListViewModelFactory
 
 private val ToolbarBlue = Color(0xFF4C75A3)
 
 @Composable
 fun AppListScreen(
         onAppClick: (AppDetails) -> Unit,
-        viewModelFactory: AppListViewModelFactory,
         modifier: Modifier = Modifier,
 ) {
-        val viewModel: AppListViewModel = viewModel(factory = viewModelFactory)
+        val viewModel: AppListViewModel = hiltViewModel()
 
         val state by viewModel.state.collectAsStateWithLifecycle()
 

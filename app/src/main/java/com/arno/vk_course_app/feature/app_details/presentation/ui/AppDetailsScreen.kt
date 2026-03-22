@@ -14,19 +14,17 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import androidx.lifecycle.viewmodel.compose.viewModel
 import com.arno.vk_course_app.R
 import com.arno.vk_course_app.feature.app_details.presentation.AppDetailsState
 import com.arno.vk_course_app.feature.app_details.presentation.AppDetailsViewModel
-import com.arno.vk_course_app.feature.app_details.presentation.AppDetailsViewModelFactory
 
 @Composable
 fun AppDetailsScreen(
-        viewModelFactory: AppDetailsViewModelFactory,
         onBackClick: () -> Unit,
 ) {
-        val viewModel: AppDetailsViewModel = viewModel(factory = viewModelFactory)
+        val viewModel: AppDetailsViewModel = hiltViewModel()
         val state by viewModel.state.collectAsStateWithLifecycle()
 
         Scaffold(
