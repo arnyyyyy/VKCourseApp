@@ -33,7 +33,12 @@ fun AppNavHost(modifier: Modifier = Modifier) {
                 }
                 composable<AppDetailsRoute> {
                         AppDetailsScreen(
-                                onBackClick = { navController.popBackStack() },
+                                onBackClick = {
+                                        navController.popBackStack(
+                                                route = AppListRoute,
+                                                inclusive = false
+                                        )
+                                }
                         )
                 }
         }
