@@ -24,7 +24,6 @@ import androidx.compose.ui.unit.sp
 import coil3.compose.AsyncImage
 import com.arno.vk_course_app.R
 import com.arno.vk_course_app.feature.app_list.domain.model.AppDetails
-import com.arno.vk_course_app.feature.app_list.domain.model.toText
 import kotlin.math.roundToInt
 
 @Composable
@@ -47,7 +46,7 @@ fun AppDetailsHeader(
         Spacer(Modifier.width(16.dp))
         Column {
             Text(
-                text = appDetails.category.toText(),
+                text = appDetails.category,
                 color = MaterialTheme.colorScheme.secondary,
                 fontSize = 12.sp,
             )

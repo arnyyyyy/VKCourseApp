@@ -1,5 +1,6 @@
 package com.arno.vk_course_app.feature.app_list.presentation
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.arno.vk_course_app.feature.app_list.domain.repository.AppRepository
@@ -28,7 +29,9 @@ class AppListViewModel @Inject constructor(
                                 _state.value = AppListState.Loading
                                 val apps = repository.getApps()
                                 _state.value = AppListState.Content(apps)
-                        }.onFailure {
+                        }.onFailure { throwable ->
+                                Log.e("AppListViewModel", "Failed to load apps", throwable)
+                                // решила оставить, так как это не чувствительные данные, а мне при разработке пригодилось
                                 _state.value = AppListState.Error
                         }
                 }

@@ -30,7 +30,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil3.compose.AsyncImage
 import com.arno.vk_course_app.feature.app_list.domain.model.AppDetails
-import com.arno.vk_course_app.feature.app_list.domain.model.toText
 
 @Composable
 fun AppList(
@@ -97,7 +96,7 @@ private fun AppListItem(
                         )
                         Spacer(modifier.height(4.dp))
                         Text(
-                                text = app.category.toText(),
+                                text = app.category,
                                 fontSize = 12.sp,
                                 color = Color.LightGray,
                                 maxLines = 1,
