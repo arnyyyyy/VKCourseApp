@@ -3,7 +3,7 @@ package com.arno.vk_course_app.feature.app_list.presentation
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.arno.vk_course_app.feature.app_list.domain.repository.AppRepository
+import com.arno.vk_course_app.feature.app_list.domain.usecase.GetAppsUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -14,7 +14,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class AppListViewModel @Inject constructor(
-        private val repository: AppRepository,
+        private val getAppsUseCase: GetAppsUseCase,
 ) : ViewModel() {
 
         private val _state = MutableStateFlow<AppListState>(AppListState.Loading)
@@ -27,7 +27,7 @@ class AppListViewModel @Inject constructor(
                 viewModelScope.launch {
                         runCatching {
                                 _state.value = AppListState.Loading
-                                val apps = repository.getApps()
+                                val apps = getAppsUseCase()
                                 _state.value = AppListState.Content(apps)
                         }.onFailure { throwable ->
                                 Log.e("AppListViewModel", "Failed to load apps", throwable)
