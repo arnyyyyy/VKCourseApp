@@ -4,8 +4,9 @@ import com.arno.vk_course_app.feature.app_list.data.dto.AppDetailsDto
 import com.arno.vk_course_app.feature.app_list.data.mapper.toDomain
 import com.arno.vk_course_app.feature.app_list.domain.model.AppDetails
 import com.arno.vk_course_app.feature.app_list.domain.repository.AppRepository
+import javax.inject.Inject
 
-class AppRepositoryImpl : AppRepository {
+class AppRepositoryImpl @Inject constructor() : AppRepository {
 
         private val apps = listOf(
                 AppDetailsDto(

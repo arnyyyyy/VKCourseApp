@@ -1,17 +1,23 @@
 package com.arno.vk_course_app.feature.app_details.presentation
 
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.arno.vk_course_app.feature.app_list.domain.usecase.GetAppByIdUseCase
+import com.arno.vk_course_app.feature.app_list.domain.repository.AppRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class AppDetailsViewModel(
-        private val appId: String,
-        private val getAppByIdUseCase: GetAppByIdUseCase,
+@HiltViewModel
+class AppDetailsViewModel @Inject constructor(
+        savedStateHandle: SavedStateHandle,
+        private val repository: AppRepository,
 ) : ViewModel() {
+
+        private val appId: String = checkNotNull(savedStateHandle["appId"])
 
         private val _state = MutableStateFlow<AppDetailsState>(AppDetailsState.Loading)
         val state = _state.asStateFlow()
@@ -20,7 +26,7 @@ class AppDetailsViewModel(
                 viewModelScope.launch {
                         try {
                                 _state.value = AppDetailsState.Loading
-                                val app = getAppByIdUseCase(appId)
+                                val app = repository.getAppById(appId)
                                 if (app != null) {
                                         _state.value = AppDetailsState.Content(appDetails = app)
                                 } else {
