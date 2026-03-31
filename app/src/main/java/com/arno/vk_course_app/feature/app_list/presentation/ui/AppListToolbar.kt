@@ -1,5 +1,6 @@
 package com.arno.vk_course_app.feature.app_list.presentation.ui
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -22,6 +23,7 @@ import coil3.compose.AsyncImage
 
 @Composable
 fun AppListToolbar(
+        onLogoClick: () -> Unit,
         modifier: Modifier = Modifier,
 ) {
         Row(
@@ -35,7 +37,9 @@ fun AppListToolbar(
                         model = "https://mnogo-golosov.ru/wp-content/uploads/2025/08/RuStore_logo.svg_.png",
                         contentDescription = "RuStore logo",
                         contentScale = ContentScale.Fit,
-                        modifier = Modifier.size(36.dp),
+                        modifier = Modifier
+                                .size(36.dp)
+                                .clickable(onClick = onLogoClick),
                 )
                 Text(
                         text = "RuStore",
