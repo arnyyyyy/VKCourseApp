@@ -23,8 +23,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil3.compose.AsyncImage
 import com.arno.vk_course_app.R
-import com.arno.vk_course_app.feature.app_details.data.AppDetails
-import com.arno.vk_course_app.feature.app_details.data.toText
+import com.arno.vk_course_app.feature.app_list.domain.model.AppDetails
+import com.arno.vk_course_app.feature.app_list.domain.model.toText
 import kotlin.math.roundToInt
 
 @Composable
