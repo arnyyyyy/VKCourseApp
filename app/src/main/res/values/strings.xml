@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">VK_Course_App</string>
+    <string name="install">Установить</string>
+    <string name="app_details_age">Возраст</string>
+    <string name="app_details_size">Размер</string>
+    <string name="app_details_description">Описание</string>
+    <string name="app_details_read_more">Читать далее</string>
+    <string name="app_details_screenshots">Скриншоты</string>
+    <string name="app_details_developer">Разработчик</string>
 </resources>
