@@ -18,6 +18,7 @@ fun AppDetailsContent(
     content: AppDetailsState.Content,
     onBackClick: () -> Unit,
     onShareClick: () -> Unit,
+    onWishlistClick: () -> Unit,
     onInstallClick: () -> Unit,
     onReadMoreClick: () -> Unit,
     onDeveloperClick: () -> Unit,
@@ -30,6 +31,8 @@ fun AppDetailsContent(
         Toolbar(
             onBackClick = onBackClick,
             onShareClick = onShareClick,
+            isInWishlist = appDetails.isInWishlist,
+            onWishlistClick = onWishlistClick,
         )
         Spacer(Modifier.height(8.dp))
         AppDetailsHeader(
